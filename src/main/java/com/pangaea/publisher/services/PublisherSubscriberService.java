@@ -101,7 +101,7 @@ public class PublisherSubscriberService {
 
 	public Boolean broadcast() throws InternalServerErrorException {
 		if (messagesQueue.isEmpty()) {
-			log.info("No messages from publishers to display");
+			log.info("NO MESSAGES TO BROADCAST YET");
 			return true;
 		} else {
 			while (!messagesQueue.isEmpty()) {
@@ -118,7 +118,7 @@ public class PublisherSubscriberService {
 						return pushToSubscribers_(subscriberMessages, subscriber);
 					}
 				} else {
-					log.info("No subscribers for this Topic");
+					log.info("NO SUBSCRIBERS TO BROADCAST TO ");
 					return true;
 				}
 			}
@@ -154,8 +154,6 @@ public class PublisherSubscriberService {
 			return null;
 
 		}).collect(Collectors.toList());
-		log.info("SIZE OF RES===|" + notifRes.size());
-
 		CompletableFuture<Void> allFutures = CompletableFuture
 				.allOf(notifRes.toArray(new CompletableFuture[notifRes.size()]));
 

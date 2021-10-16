@@ -13,13 +13,10 @@ import lombok.RequiredArgsConstructor;
 @Component
 @RequiredArgsConstructor
 public abstract class Subscriber {
-	
 
 	protected List<NotificationMessage> subscriberMsgs = new ArrayList<NotificationMessage>();
 	private String notificationUrl;
-	private HashMap<String, String> topicNotificationUrl= new HashMap<>();
-	
-	
+	private HashMap<String, String> topicNotificationUrl = new HashMap<>();
 
 	public List<NotificationMessage> getSubscriberMsgs() {
 		return subscriberMsgs;
